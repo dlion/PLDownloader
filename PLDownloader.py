@@ -25,7 +25,10 @@ def urlFinder(lnk):
 
 
 def nameFinder(lnk):
-	videoName = re.search('download/.*?/(.*?)[/|?]', lnk)
+	if "download" in lnk:
+		videoName = re.search('download/.*?/(.*?)[/|?]', lnk)
+	else:
+		videoName = re.search('%3D/(.*?\.flv)', lnk)
 	return videoName.group(1)
 
 
