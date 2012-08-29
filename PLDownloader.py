@@ -25,10 +25,9 @@ def urlFinder(lnk):
 
 
 def nameFinder(lnk):
-	if "download" in lnk:
-		videoName = re.search('download/.*?/(.*?)[/|?]', lnk)
-	else:
-		videoName = re.search('%3D/(.*?\.flv)', lnk)
+	print "[*]Extracting name\n"
+	part = lnk.split("/")
+	videoName = re.search('(.*?\.flv)', part[len(part)-1])
 	return videoName.group(1)
 
 
@@ -83,7 +82,7 @@ print " _|   _|__, _|__/  \__/ _|_|_|   _|  |_, _|__,  \__/ _|  )  _|__/ _|__, _
 print "(    (     (           (        (       (           (      (     (     (" 
 print"\t\t\t\t by slacknux\n"
 
-if len(sys.argv) < 2 or len(sys.argv) > 2:
+if len(sys.argv) != 2:
 	usage()
 
 url = urlFinder(sys.argv[1])
