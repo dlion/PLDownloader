@@ -28,6 +28,7 @@ def nameFinder(lnk):
 	print "[*]Extracting name\n"
 	part = lnk.split("/")
 	videoName = re.search('(.*?\.flv)', part[len(part)-1])
+	print "[*]Name: ",videoName.group(1),"\n"
 	return videoName.group(1)
 
 
@@ -91,6 +92,7 @@ if "&amp;" in url:
 	url = url.replace("&amp;", "&")
 
 fileName = nameFinder(url)
+print "[*]URL: %s\n" % url
 u = urllib2.urlopen(url)
 f = open(fileName, 'wb')
 meta = u.info()
